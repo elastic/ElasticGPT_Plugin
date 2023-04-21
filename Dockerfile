@@ -5,6 +5,7 @@ WORKDIR /app
 COPY app.py /app/app.py
 COPY logo.png /app/logo.png
 COPY .well-known /app/.well-known
+COPY openapi.yaml /openapi.yaml
 
 RUN pip install --no-cache-dir \
     quart \
