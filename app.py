@@ -115,21 +115,20 @@ async def search():
   query = request.args.get("query")
   print(query)
 
-  negResponse = "I'm unable to answer the question based on the information I have from Elastic Docs."
-
+  #negResponse = "I'm unable to answer the question based on the information I have from Elastic Docs."
     
   resp, url = ESSearch(query)
-  prompt = f"Answer this question: {query}\nUsing only the information from this Elastic Doc: {resp}\nIf the answer is not contained in the supplied doc reply '{negResponse}' and nothing else"
-  answer = chat_gpt(prompt)
+  #prompt = f"Answer this question: {query}\nUsing only the information from this Elastic Doc: {resp}\nIf the answer is not contained in the supplied doc reply '{negResponse}' and nothing else"
+  #answer = chat_gpt(prompt)
 
-  #negResponse = "I'm unable to answer the question based on the information I have from Elastic Docs."
+  #if negResponse in answer:
+  #  response = answer.strip()
+  #else:
+  #  response = f"ChatGPT: {answer.strip()}\n\nDocs: {url}"
 
-  if negResponse in answer:
-    response = answer.strip()
-  else:
-    response = f"ChatGPT: {answer.strip()}\n\nDocs: {url}"
+  #return quart.Response(response=response, status=200)
 
-  return quart.Response(response=response, status=200)
+  return quart.Response(response=resp + '\n\n' + resp)
 
 
 # DO NOT TOUCH ANYTHING BELOW THIS COMMENT!
