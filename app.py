@@ -12,17 +12,13 @@ from elasticsearch import Elasticsearch
 
 app = quart_cors.cors(quart.Quart(__name__), allow_origin="*")
 
-# JEFF THIS IS WHERE YOU WANT TO ADD YOUR CODE !!
-
 openai.api_key = os.environ['openai_api']
 model = "gpt-3.5-turbo-0301"
-
 
 # Connect to Elastic Cloud cluster
 def es_connect(cid, user, passwd):
   es = Elasticsearch(cloud_id=cid, http_auth=(user, passwd))
   return es
-
 
 # Search ElasticSearch index and return body and URL of the result
 def ESSearch(query_text):
@@ -113,33 +109,14 @@ def chat_gpt(prompt,
 @app.get("/search")
 async def search():
   query = request.args.get("query")
-  print(query)
-
-  #negResponse = "I'm unable to answer the question based on the information I have from Elastic Docs."
-    
   resp, url = ESSearch(query)
-  #prompt = f"Answer this question: {query}\nUsing only the information from this Elastic Doc: {resp}\nIf the answer is not contained in the supplied doc reply '{negResponse}' and nothing else"
-  #answer = chat_gpt(prompt)
-
-  #if negResponse in answer:
-  #  response = answer.strip()
-  #else:
-  #  response = f"ChatGPT: {answer.strip()}\n\nDocs: {url}"
-
-  #return quart.Response(response=response, status=200)
-
   return quart.Response(response=resp + '\n\n' + resp)
 
 
-# DO NOT TOUCH ANYTHING BELOW THIS COMMENT!
 @app.get("/logo.png")
 async def plugin_logo():
   filename = 'logo.png'
   return await quart.send_file(filename, mimetype='image/png')
-
-
-# https://elasticdocplugin.bahaaldineazarm.repl.co/.well-known/ai-plugin.json
-
 
 @app.get("/.well-known/ai-plugin.json")
 async def plugin_manifest():
