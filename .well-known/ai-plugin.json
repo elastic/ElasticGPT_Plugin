@@ -2,7 +2,7 @@
     "schema_version": "v1",
     "name_for_human": "ElasticDocGPT",
     "name_for_model": "ElasticDocGPT",
-    "description_for_human": "Get most recent elasticsearch docs post 2021 release",
+    "description_for_human": "Elastic Assistant, you know, for knowledge",
     "description_for_model": "Get most recent elasticsearch docs post 2021 release, anything after release 7.15",
     "auth": {
       "type": "none"
