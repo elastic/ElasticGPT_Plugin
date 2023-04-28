@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: ElasticGPTDoc_Plugin
+  title: ElasticGPT_Plugin
   description: Retrieve information from the most recent Elastic documentation
   version: 'v1'
 servers:

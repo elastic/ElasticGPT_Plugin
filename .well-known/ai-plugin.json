@@ -1,8 +1,8 @@
 {
     "schema_version": "v1",
-    "name_for_human": "ElasticGPTDoc_Plugin",
-    "name_for_model": "ElasticGPTDoc_Plugin",
-    "description_for_human": "Elastic Assistant, you know, for knowledge",
+    "name_for_human": "ElasticGPT_Plugin",
+    "name_for_model": "ElasticGPT_Plugin",
+    "description_for_human": "Elastic assistant, you know, for search",
     "description_for_model": "Get most recent elasticsearch docs post 2021 release, anything after release 7.15",
     "auth": {
       "type": "none"
